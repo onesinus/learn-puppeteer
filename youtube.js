@@ -4,11 +4,8 @@ const pup = require('puppeteer');
 (async() => {
     try {
         const browser = await pup.launch({
-            headless: true,
-            executablePath: process.env.CHROMIUM_PATH,
-            args: ['--no-sandbox'],            
-            // headless: false,
-            // slowMo: 100
+            headless: false,
+            slowMo: 100
         });
         const page = await browser.newPage();
         
@@ -25,7 +22,7 @@ const pup = require('puppeteer');
 
         await page.evaluate(() => {
             const video_titles = document.querySelectorAll("a#video-title");
-            video_titles.forEach((title, idx) => {
+            video_titles.forEach((_, idx) => {
                 console.log(video_titles[idx].textContent);
             });
             
