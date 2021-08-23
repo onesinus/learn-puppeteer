@@ -1,5 +1,16 @@
 const pup = require('puppeteer');
 // const pup = require('puppeteer-core');
+
+const sleep_in_seconds = 1000 * 30
+function infiniteLoop() {
+    Main()
+    setTimeout(() => {
+        infiniteLoop();
+    }, sleep_in_seconds)
+}
+
+infiniteLoop();
+
 async function Main () {
     try {
         console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.. start');
@@ -16,15 +27,10 @@ async function Main () {
 
         await page.waitForSelector("#avatar-section");
         await page.click('#avatar-section');
-
-        await page.evaluate(() => {
-            const video_titles = document.querySelectorAll("a#video-title");
-            video_titles.forEach((_, idx) => {
-                console.log(video_titles[idx].textContent);
-            });
-        });
+        setTimeout(async () => {
+            await browser.close();
+        }, 3000)
     } catch (error) {
         console.log(error);
     }
 }
-Main ()

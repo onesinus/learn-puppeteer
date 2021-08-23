@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node youtube.js"
+    "start": "node youtube.js",
+    "start-infinite": "node infinite-youtube.js"
   },
   "keywords": [],
   "author": "",
